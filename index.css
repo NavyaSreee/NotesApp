@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Charmonman&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+     /*width: 100vw; */
+     height: 100vh;
+     overflow-x: hidden;
+     overflow-y: auto;
+     /*overflow: hidden;*/
+}
+
+.container {
+    background-color: black;
+    /*width: 100vw;*/
+    min-width: 100vw;
+    max-width: 1024px;
+    /*height: 89%;*/
+}
+
+#displayArea {
+    background-color: black;
+    margin-right: 2%;
+    /*width: 95%;
+    height: 100%; */
+    display: grid;
+    padding: 1rem;
+    grid-template-columns: repeat(5, 0.2fr);
+    gap: 25px;
+    
+    /*grid-template-rows: repeat(5, 0.15fr); */
+    /*grid-auto-rows: minmax(100px, auto);*/
+   
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    color: white;
+    grid-column: 1 / -1; /* to mention that the h1 element should occupy the first row completely*/
+}
+
+.controls {
+    background-color: black; 
+    width: 100%;
+    font-size: larger;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    color: gray;
+
+}
+
+.controls i {
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    
+}
+
+.fa-times, .fa-trash {
+    margin: 10px 3px;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.fa-times {
+    margin-right: 2%;
+}
+
+.fa-times:hover, .fa-trash:hover {
+    transform: scale(1.2);
+    background-image: linear-gradient(to left,#C02425, #f0cb35);
+    color: whitesmoke;
+}
+
+.inputArea {
+    background-color: black;
+    /*width: 95%;
+    height: 100%;*/
+    margin: auto;
+    display: none;
+}
+
+input {
+    background-color: black;
+    width: 98%;
+    padding: 0.3rem;
+    font-family: 'Dancing Script', cursive;
+    border: none;
+    outline: none;
+    overflow: wrap;
+    border-bottom: 3px solid gray;
+    font-size: xx-large;
+    color: white;
+    padding-left: 0.25rem;
+}
+
+textarea {
+    background-color: black;
+    margin: 0.5rem 0;
+    width: 98%;
+    /*height: 81%; */
+    font-family: 'Dancing Script', cursive;
+    font-size: xx-large;
+    outline: none;
+    border: none;
+    color: white;
+    padding-left: 0.25rem;
+    resize: none;  /*to hide the resize symbol available for a textarea Element*/
+   
+}
+
+#footer {
+    background-color: black;
+    border: none;
+    outline: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin-left: 95vw;/*93.5vw;*/
+    position: absolute; /*For the footer to be at a fixed position relative to it's parent(body here)*/
+    top: 92vh; /*92vh*/
+    position: sticky; /* To stick the footer once it touches a page end so that even when user scrolls to bottom, he can see the "+" icon*/
+    bottom: 0%;
+    right: 0%;
+}
+
+
+#footer button {
+    background-image: linear-gradient(to left, #C02425, #f0cb35);/*linear-gradient(to left, pink,orange);/*#3399ff;*/
+    width: 100%;
+    height:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+    border: none;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: light;  
+    transition: all 0.5s ease-in-out;
+}
+
+#footer button:hover {
+ transform: scale(1.1);
+}
+
+.newinputArea {
+    /*background-color: #282828; */ /*Setting bckgrnd clr in JS */
+    /*width: 300px;
+    height: 200px; */
+    color:white;
+    font-family: 'Dancing Script', cursive;
+    border-radius: 5px;
+    position: relative;
+    min-height: 100px;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+h3 {
+    font-size: 2rem;
+    /*overflow: hidden; */
+    padding: 0.25rem;
+    font-weight: bold;  
+}
+
+h5 {
+   font-size: 1rem;
+   font-weight: normal;
+   margin-bottom: 2.5rem;
+   padding: 0.25rem;
+   display: none; /* Just showing title on the displayArea so that based on content the DIV doesn't get too long in size*/
+}
+
+span {
+    font-size: 0.75rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 900;
+    /*color: gray; */
+    background-image: linear-gradient(to left,#C02425, #f0cb35); /*To add lineargradient to a text, need to set all these properties*/
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-left: 0.25rem;
+    position: absolute; /*Position of date display to be at a fixed position relative to it's parent(notearea here)*/
+    bottom: 2%;
+}
+
+.warning {
+    border: 2px solid red !important;
+}
+
+
+@media(max-width: 720px) {
+    #displayArea {
+        display: grid;
+        padding: 1rem;
+        grid-template-columns: repeat(4, 0.5fr);
+        gap: 20px;
+
+    }
+    #footer {
+        margin-left: 89.5vw;
+    }    
+}
+
+
+@media(max-width: 508px) {
+    #displayArea {
+        display: grid;
+        padding: 1rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+
+    }
+
+    #footer {
+        margin-left: 90vw;
+    }    
+
+}
+
+@media(max-width: 400px) {
+    #displayArea {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 1rem;
+    }
+
+    #footer {
+        margin-left: 87vw;
+    }  
+
+
+}
+
+@media(max-width: 300px) {
+    #displayArea {
+        display: grid;
+        grid-template-columns: 0.8fr;
+        padding: 1rem;
+        align-content:center;
+        justify-content: center;
+}
+
+    #footer {
+        margin-left: 83vw;
+
+    }  
+
+}
+
+#bgClrs {
+  background-color: black;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: fit-content;
+  padding: 0.5rem
+
+
+}
+
+#bgClrs button {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid #282828;
+  margin-right: 2%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  font-weight:lighter;
+
+}
+
+#blackGray {
+    background-color: #282828;
+}
+  
+#maroon {
+  background-color: maroon;
+}
+
+#blueViolet {
+    background-color: #8A2BE2;
+}
+
+#deepPurple {
+    background-color: #330033;
+}
+
+#darkerAlice {
+  background-color: #12A7A8;
+}
+
+#darkOliveGreen {
+  background-color: darkOliveGreen; /*#556B2F;*/
+}
+
+#deepBurgundy {
+  background-color: #660033;
+}
+
+#burntUmber {
+    background-color: #330000;
+}
+
+#midnightBlue {
+  background-color: #000033;
+}
+
+#tangerineTango {
+    background-color: #DD4124;
+}
+
+#darkestKelly {
+    background-color: #829356;/*rgb(189, 83, 83);*/
+}
+
+#blue {
+    background-color: rgb(70, 70, 224);
+}
+
+#fuchsiaRose {
+    background-color: #C3447A;
+}
+
+#indigoBlue {
+    background-color: #330066;
+}
+
+#peruvianTurquoise {
+    background-color: #003333;
+}
+
+.fa-check {
+    display: none; 
+    pointer-events: none;
+}
+
+.selected {
+    color: white;
+    display: inline-block;
+    font-size: 65%;
+}
+
+
+
